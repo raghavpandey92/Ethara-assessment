@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const path = require('path');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
@@ -61,15 +60,6 @@ app.use('/api/users', userRoutes);
 
 app.use('/api', notFound);
 
-if (process.env.NODE_ENV === 'production') {
-  const clientBuildPath = path.join(__dirname, '..', 'client', 'build');
-
-  app.use(express.static(clientBuildPath));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
-  });
-}
 
 // Keep these after routes so unknown URLs return a clean JSON error.
 if (process.env.NODE_ENV !== 'production') {
