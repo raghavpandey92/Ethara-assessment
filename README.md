@@ -124,8 +124,3 @@ Optional: run seed once from Railway shell or locally against the production Mon
 npm run seed
 ```
 
-## Notes
-
-- In development, React uses `http://localhost:5000/api`.
-- In production, React uses `/api`, so it works on the same Railway domain.
-- `.env` is ignored by git. Use `.env.example` as a template.
